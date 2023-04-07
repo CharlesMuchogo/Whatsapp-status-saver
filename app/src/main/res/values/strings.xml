@@ -40,5 +40,9 @@
     <string name="check_for_update">Check for update</string>
     <string name="cant_find_whatsapp_dir">Cant find WhatsApp Dir</string>
     <string name="charles">Charles</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="direct_chat">Direct Chat</string>
+    <string name="enter_country_code">Enter Country Code:</string>
 
 </resources>

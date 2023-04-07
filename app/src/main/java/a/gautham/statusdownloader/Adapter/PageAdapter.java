@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import a.gautham.statusdownloader.Fragments.ImageFragment;
 import a.gautham.statusdownloader.Fragments.SavedFilesFragment;
 import a.gautham.statusdownloader.Fragments.VideoFragment;
+import a.gautham.statusdownloader.Fragments.WhatsappFragment;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
@@ -21,12 +22,16 @@ public class PageAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-
-        if (position == 0)
+        if (position == 0){
+            return new WhatsappFragment();
+        }
+        if (position == 1){
             return new ImageFragment();
+        }
 
-        if (position == 1)
+        if (position == 2){
             return new VideoFragment();
+        }
 
         return new SavedFilesFragment();
 

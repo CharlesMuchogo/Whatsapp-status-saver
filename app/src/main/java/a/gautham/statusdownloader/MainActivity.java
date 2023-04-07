@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         setSupportActionBar(toolbar);
 
+        tabLayout.addTab(tabLayout.newTab().setText("Whatsapp"));
+
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.images)));
         tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.videos)));
 
