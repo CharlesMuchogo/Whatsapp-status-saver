@@ -1,4 +1,7 @@
 # WhatsApp_Status_Saver
-WhatsApp Status Downloader, preview and save files
+WhatsApp Status Downloader,
 
-[Checkout All Releases](https://github.com/GauthamAsir/WhatsApp_Status_Saver/releases)
+This is a Whatsapp status saver for both photos and videos
+it lso implements direct chat to a contact on whatsapp
+
+
