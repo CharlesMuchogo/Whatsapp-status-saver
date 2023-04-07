@@ -1,5 +1,7 @@
 package a.gautham.statusdownloader.Fragments;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.UriPermission;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +26,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,11 +55,46 @@ public class ImageFragment extends Fragment {
     private RelativeLayout container;
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView messageTextView;
+    private InterstitialAd mInterstitialAd;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {}
+        });
+        AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(getContext(),"ca-app-pub-3940256099942544/1033173712", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        mInterstitialAd.show(requireActivity());
+
+                        Log.i("Testing ads", "onAdLoaded");
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.d("Testing ads", loadAdError.toString());
+                        mInterstitialAd = null;
+                    }
+                });
         return inflater.inflate(R.layout.fragment_images, container, false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(mInterstitialAd != null ){
+            mInterstitialAd.show(requireActivity());
+
+        }
     }
 
     @Override

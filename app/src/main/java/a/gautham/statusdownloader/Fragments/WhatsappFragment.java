@@ -17,6 +17,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.button.MaterialButton;
 
 import a.gautham.statusdownloader.MainActivity;
@@ -28,6 +31,7 @@ public class WhatsappFragment extends Fragment {
     private  View view;
     private MaterialButton SendMessageBtn;
     private EditText countryCode, PhoneNumber, TextMessage;
+    private AdView adView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,14 @@ public class WhatsappFragment extends Fragment {
         countryCode = view.findViewById(R.id.countryCode);
         PhoneNumber = view.findViewById(R.id.PhoneNumber);
         TextMessage = view.findViewById(R.id.TextMessage);
+        adView = view.findViewById(R.id.adView);
+
+        //adView.setAdSize(AdSize.BANNER);
+
+        //adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         SendMessageBtn.setOnClickListener(view -> {
             PackageManager pm=getContext(). getPackageManager();
@@ -72,14 +84,12 @@ public class WhatsappFragment extends Fragment {
                 Log.d(TAG, "onCreateView: "+toNumber);
                 Intent sendIntent = new Intent(Intent.ACTION_VIEW);
                 sendIntent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+toNumber.replaceAll(" ", "") +"&text="+message));
-//            sendIntent.setPackage("com.whatsapp");
-//            startActivity(Intent.createChooser(sendIntent, "Share with"));
-            startActivity(sendIntent);
+                startActivity(sendIntent);
 
         }
         catch (Exception e){
             e.printStackTrace();
-            Toast.makeText(getContext(),"it may be you dont have whats app",Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(),"it may be you don't have Whatsapp",Toast.LENGTH_LONG).show();
 
         }
         });
