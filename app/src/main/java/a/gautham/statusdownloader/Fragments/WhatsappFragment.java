@@ -50,14 +50,8 @@ public class WhatsappFragment extends Fragment {
         countryCode = view.findViewById(R.id.countryCode);
         PhoneNumber = view.findViewById(R.id.PhoneNumber);
         TextMessage = view.findViewById(R.id.TextMessage);
-        adView = view.findViewById(R.id.adView);
 
-        //adView.setAdSize(AdSize.BANNER);
 
-        //adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
 
         SendMessageBtn.setOnClickListener(view -> {
             PackageManager pm=getContext(). getPackageManager();

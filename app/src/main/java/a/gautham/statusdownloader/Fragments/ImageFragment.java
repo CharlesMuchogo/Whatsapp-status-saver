@@ -42,6 +42,7 @@ import java.util.concurrent.Executors;
 
 import a.gautham.statusdownloader.Adapter.ImageAdapter;
 import a.gautham.statusdownloader.Models.Status;
+import a.gautham.statusdownloader.MyAds;
 import a.gautham.statusdownloader.R;
 import a.gautham.statusdownloader.Utils.Common;
 
@@ -61,30 +62,8 @@ public class ImageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        MobileAds.initialize(getContext(), new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {}
-        });
-        AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(getContext(),"ca-app-pub-3940256099942544/1033173712", adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-                        mInterstitialAd.show(requireActivity());
-
-                        Log.i("Testing ads", "onAdLoaded");
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
-                        Log.d("Testing ads", loadAdError.toString());
-                        mInterstitialAd = null;
-                    }
-                });
+        MyAds ads = new MyAds(requireContext());
+        ads.ShowInterestialAds();
         return inflater.inflate(R.layout.fragment_images, container, false);
     }
 

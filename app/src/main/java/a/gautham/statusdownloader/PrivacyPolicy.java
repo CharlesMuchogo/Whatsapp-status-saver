@@ -21,7 +21,7 @@ public class PrivacyPolicy extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.policy_view);
 
-        textView.setText("Our app, Status Downloader, is committed to respecting your privacy and collecting personal information only when necessary to provide you with our services. We do this in a fair and lawful manner, with your knowledge and consent, and we ensure that you know why we are collecting your information and how it will be used.\n" +
+        textView.setText("Our app, GB Saver, is committed to respecting your privacy and collecting personal information only when necessary to provide you with our services. We do this in a fair and lawful manner, with your knowledge and consent, and we ensure that you know why we are collecting your information and how it will be used.\n" +
                 "\n" +
                 "We will retain your information only for as long as necessary to provide the service you have requested, and we will take commercially acceptable measures to protect the data we store from loss, theft, unauthorized access, disclosure, copying, use, or modification.\n" +
                 "\n" +
@@ -29,7 +29,7 @@ public class PrivacyPolicy extends AppCompatActivity {
                 "\n" +
                 "You have the right to refuse to provide your personal information, but please understand that this may limit your access to some of our services. By continuing to use our app, you are indicating your acceptance of our privacy practices and policies. If you have any questions about how we handle user data and personal information, please do not hesitate to contact us.\n" +
                 "\n" +
-                "This privacy policy has been in effect since April 01, 2023.");
+                "This privacy policy has been in effect since April 20, 2023.");
 
     }
 }

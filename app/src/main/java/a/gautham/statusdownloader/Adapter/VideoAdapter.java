@@ -23,6 +23,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import a.gautham.statusdownloader.Models.Status;
+import a.gautham.statusdownloader.MyAds;
 import a.gautham.statusdownloader.R;
 import a.gautham.statusdownloader.Utils.Common;
 
@@ -128,7 +129,12 @@ public class VideoAdapter extends RecyclerView.Adapter<ItemViewHolder> {
 
         });
 
-        holder.save.setOnClickListener(v -> Common.copyFile(status, context, container));
+        holder.save.setOnClickListener(view -> {
+            Common.copyFile(status, context, container);
+            MyAds ads = new MyAds(context);
+            ads.ShowInterestialAds();
+        }
+        );
 
     }
 

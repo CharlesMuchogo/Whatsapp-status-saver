@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +40,7 @@ import java.util.concurrent.Executors;
 
 import a.gautham.statusdownloader.Adapter.VideoAdapter;
 import a.gautham.statusdownloader.Models.Status;
+import a.gautham.statusdownloader.MyAds;
 import a.gautham.statusdownloader.R;
 import a.gautham.statusdownloader.Utils.Common;
 
@@ -43,6 +53,8 @@ public class VideoFragment extends Fragment {
     private RelativeLayout container;
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView messageTextView;
+
+
 
     @Nullable
     @Override
@@ -73,6 +85,9 @@ public class VideoFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), Common.GRID_COUNT));
 
         getStatus();
+
+        MyAds ads = new MyAds(requireContext());
+        ads.ShowInterestialAds();
 
         super.onViewCreated(view, savedInstanceState);
     }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +18,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 import java.util.List;
 
 import a.gautham.statusdownloader.Models.Status;
+import a.gautham.statusdownloader.MyAds;
 import a.gautham.statusdownloader.R;
 import a.gautham.statusdownloader.Utils.Common;
 
@@ -29,6 +38,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     private final List<Status> imagesList;
     private Context context;
     private final RelativeLayout container;
+
 
     public ImageAdapter(List<Status> imagesList, RelativeLayout container) {
         this.imagesList = imagesList;
@@ -57,7 +67,18 @@ public class ImageAdapter extends RecyclerView.Adapter<ItemViewHolder> {
             Glide.with(context).load(status.getFile()).into(holder.imageView);
         }
 
-        holder.save.setOnClickListener(v -> Common.copyFile(status, context, container));
+        holder.save.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View view) {
+                                                Common.copyFile(status, context, container);
+                                               MyAds ads = new MyAds(context);
+                                               ads.ShowInterestialAds();
+                                           }
+                                       }
+
+
+
+        );
 
         holder.share.setOnClickListener(v -> {
 
