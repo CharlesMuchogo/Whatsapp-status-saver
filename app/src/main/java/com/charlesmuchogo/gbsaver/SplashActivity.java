@@ -1,4 +1,4 @@
-package com.gb.saver;
+package com.charlesmuchogo.gbsaver;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -59,6 +59,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private final Handler handler = new Handler();
 
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +75,7 @@ public class SplashActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
 
             // If Android 10+
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
                 requestPermissionQ();
                 return;
             }

@@ -1,4 +1,4 @@
-package com.gb.saver.Fragments;
+package com.charlesmuchogo.gbsaver.Fragments;
 
 import android.content.UriPermission;
 import android.os.Build;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,60 +23,45 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.gb.saver.R;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
 
-import com.gb.saver.Adapter.ImageAdapter;
-import com.gb.saver.Models.Status;
-import com.gb.saver.MyAds;
-import com.gb.saver.Utils.Common;
+import com.charlesmuchogo.gbsaver.Adapter.VideoAdapter;
+import com.charlesmuchogo.gbsaver.Models.Status;
+import com.charlesmuchogo.gbsaver.MyAds;
+import com.charlesmuchogo.gbsaver.R;
+import com.charlesmuchogo.gbsaver.Utils.Common;
 
 
-public class ImageFragment extends Fragment {
+public class VideoFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
-    private final List<Status> imagesList = new ArrayList<>();
-
-    private ImageAdapter imageAdapter;
+    private final List<Status> videoList = new ArrayList<>();
+    private VideoAdapter videoAdapter;
     private RelativeLayout container;
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView messageTextView;
-    private InterstitialAd mInterstitialAd;
+
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        MyAds ads = new MyAds(requireContext());
-        ads.ShowInterestialAds();
-        return inflater.inflate(R.layout.fragment_images, container, false);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if(mInterstitialAd != null ){
-            mInterstitialAd.show(requireActivity());
-
-        }
+        return inflater.inflate(R.layout.fragment_videos, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = view.findViewById(R.id.recyclerViewImage);
-        progressBar = view.findViewById(R.id.prgressBarImage);
-        container = view.findViewById(R.id.image_container);
+        recyclerView = view.findViewById(R.id.recyclerViewVideo);
+        progressBar = view.findViewById(R.id.prgressBarVideo);
+        container = view.findViewById(R.id.videos_container);
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
-        messageTextView = view.findViewById(R.id.messageTextImage);
+        messageTextView = view.findViewById(R.id.messageTextVideo);
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
@@ -94,6 +78,10 @@ public class ImageFragment extends Fragment {
 
         getStatus();
 
+        MyAds ads = new MyAds(requireContext());
+        ads.ShowInterestialAds();
+
+        super.onViewCreated(view, savedInstanceState);
     }
 
     private void getStatus() {
@@ -115,61 +103,7 @@ public class ImageFragment extends Fragment {
 
     }
 
-    private void executeOld() {
-
-        Executors.newSingleThreadExecutor().execute(() -> {
-
-            Handler mainHandler = new Handler(Looper.getMainLooper());
-
-            File[] statusFiles;
-            statusFiles = Common.STATUS_DIRECTORY.listFiles();
-            imagesList.clear();
-
-            if (statusFiles != null && statusFiles.length > 0) {
-
-                Arrays.sort(statusFiles);
-                for (File file : statusFiles) {
-                    Status status = new Status(file, file.getName(), file.getAbsolutePath());
-
-                    if (!status.isVideo() && status.getTitle().endsWith(".jpg")) {
-                        imagesList.add(status);
-                    }
-
-                }
-
-                mainHandler.post(() -> {
-
-                    if (imagesList.size() <= 0) {
-                        messageTextView.setVisibility(View.VISIBLE);
-                        messageTextView.setText(R.string.no_files_found);
-                    } else {
-                        messageTextView.setVisibility(View.GONE);
-                        messageTextView.setText("");
-                    }
-
-                    imageAdapter = new ImageAdapter(imagesList, container);
-                    recyclerView.setAdapter(imageAdapter);
-                    imageAdapter.notifyItemRangeChanged(0, imagesList.size());
-                    progressBar.setVisibility(View.GONE);
-                });
-
-            } else {
-
-                mainHandler.post(() -> {
-                    progressBar.setVisibility(View.GONE);
-                    messageTextView.setVisibility(View.VISIBLE);
-                    messageTextView.setText(R.string.no_files_found);
-                    Toast.makeText(getActivity(), getString(R.string.no_files_found), Toast.LENGTH_SHORT).show();
-                });
-
-            }
-            swipeRefreshLayout.setRefreshing(false);
-
-        });
-    }
-
     private void executeNew() {
-
         Executors.newSingleThreadExecutor().execute(() -> {
             Handler mainHandler = new Handler(Looper.getMainLooper());
 
@@ -177,7 +111,7 @@ public class ImageFragment extends Fragment {
 
             DocumentFile file = DocumentFile.fromTreeUri(requireActivity(), list.get(0).getUri());
 
-            imagesList.clear();
+            videoList.clear();
 
             if (file == null) {
                 mainHandler.post(() -> {
@@ -206,16 +140,14 @@ public class ImageFragment extends Fragment {
             for (DocumentFile documentFile : statusFiles) {
                 Status status = new Status(documentFile);
 
-                if (!status.isVideo() && !status.isHidden()) {
-                    imagesList.add(status);
+                if (status.isVideo()) {
+                    videoList.add(status);
                 }
             }
 
-            Log.e("HEY: ", String.valueOf(imagesList.size()));
-
             mainHandler.post(() -> {
 
-                if (imagesList.size() <= 0) {
+                if (videoList.size() <= 0) {
                     messageTextView.setVisibility(View.VISIBLE);
                     messageTextView.setText(R.string.no_files_found);
                 } else {
@@ -223,13 +155,67 @@ public class ImageFragment extends Fragment {
                     messageTextView.setText("");
                 }
 
-                imageAdapter = new ImageAdapter(imagesList, container);
-                recyclerView.setAdapter(imageAdapter);
-                imageAdapter.notifyItemRangeChanged(0, imagesList.size());
+                videoAdapter = new VideoAdapter(videoList, container);
+                recyclerView.setAdapter(videoAdapter);
+                videoAdapter.notifyItemRangeChanged(0, videoList.size());
                 progressBar.setVisibility(View.GONE);
             });
+
             swipeRefreshLayout.setRefreshing(false);
+
         });
+    }
+
+    private void executeOld() {
+
+        Executors.newSingleThreadExecutor().execute(() -> {
+            Handler mainHandler = new Handler(Looper.getMainLooper());
+
+            File[] statusFiles = Common.STATUS_DIRECTORY.listFiles();
+            videoList.clear();
+
+            if (statusFiles != null && statusFiles.length > 0) {
+
+                Arrays.sort(statusFiles);
+                for (File file : statusFiles) {
+                    Status status = new Status(file, file.getName(), file.getAbsolutePath());
+
+                    if (status.isVideo()) {
+                        videoList.add(status);
+                    }
+
+                }
+
+                mainHandler.post(() -> {
+
+                    if (videoList.size() <= 0) {
+                        messageTextView.setVisibility(View.VISIBLE);
+                        messageTextView.setText(R.string.no_files_found);
+                    } else {
+                        messageTextView.setVisibility(View.GONE);
+                        messageTextView.setText("");
+                    }
+
+                    videoAdapter = new VideoAdapter(videoList, container);
+                    recyclerView.setAdapter(videoAdapter);
+                    videoAdapter.notifyItemRangeChanged(0, videoList.size());
+                    progressBar.setVisibility(View.GONE);
+                });
+
+            } else {
+
+                mainHandler.post(() -> {
+                    progressBar.setVisibility(View.GONE);
+                    messageTextView.setVisibility(View.VISIBLE);
+                    messageTextView.setText(R.string.no_files_found);
+                    Toast.makeText(getActivity(), getString(R.string.no_files_found), Toast.LENGTH_SHORT).show();
+                });
+
+            }
+            swipeRefreshLayout.setRefreshing(false);
+
+        });
+
     }
 
 }

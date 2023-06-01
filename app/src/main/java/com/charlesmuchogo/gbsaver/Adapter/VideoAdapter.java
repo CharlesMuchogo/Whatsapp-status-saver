@@ -1,4 +1,4 @@
-package com.gb.saver.Adapter;
+package com.charlesmuchogo.gbsaver.Adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,10 +22,10 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import com.gb.saver.Models.Status;
-import com.gb.saver.MyAds;
-import com.gb.saver.R;
-import com.gb.saver.Utils.Common;
+import com.charlesmuchogo.gbsaver.Models.Status;
+import com.charlesmuchogo.gbsaver.MyAds;
+import com.charlesmuchogo.gbsaver.R;
+import com.charlesmuchogo.gbsaver.Utils.Common;
 
 public class VideoAdapter extends RecyclerView.Adapter<ItemViewHolder> {
 

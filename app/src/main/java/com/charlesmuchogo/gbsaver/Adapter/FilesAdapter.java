@@ -1,4 +1,4 @@
-package com.gb.saver.Adapter;
+package com.charlesmuchogo.gbsaver.Adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -24,8 +24,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import com.gb.saver.Models.Status;
-import com.gb.saver.R;
+import com.charlesmuchogo.gbsaver.Models.Status;
+import com.charlesmuchogo.gbsaver.R;
 
 public class FilesAdapter extends RecyclerView.Adapter<ItemViewHolder> {
 

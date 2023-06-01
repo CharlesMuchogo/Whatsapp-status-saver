@@ -1,4 +1,4 @@
-package com.gb.saver.Utils;
+package com.charlesmuchogo.gbsaver.Utils;
 
 import android.content.Context;
 import android.media.MediaScannerConnection;

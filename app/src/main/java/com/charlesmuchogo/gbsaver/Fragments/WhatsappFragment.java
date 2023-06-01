@@ -1,4 +1,4 @@
-package com.gb.saver.Fragments;
+package com.charlesmuchogo.gbsaver.Fragments;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.gb.saver.R;
+import com.charlesmuchogo.gbsaver.R;
 import com.google.android.gms.ads.AdView;
 import com.google.android.material.button.MaterialButton;
 

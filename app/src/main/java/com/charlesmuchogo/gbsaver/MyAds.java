@@ -1,11 +1,10 @@
-package com.gb.saver;
+package com.charlesmuchogo.gbsaver;
 
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
@@ -24,7 +23,7 @@ public class MyAds {
     public void ShowInterestialAds(){
         MobileAds.initialize(context, initializationStatus -> {});
         AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(context,"ca-app-pub-3940256099942544/1033173712", adRequest,
+        InterstitialAd.load(context,"ca-app-pub-6323830758154106/1270107577", adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {

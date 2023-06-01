@@ -1,4 +1,4 @@
-package com.gb.saver;
+package com.charlesmuchogo.gbsaver;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -33,8 +33,8 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.Objects;
 
 
-import com.gb.saver.Adapter.PageAdapter;
-import com.gb.saver.Utils.Common;
+import com.charlesmuchogo.gbsaver.Adapter.PageAdapter;
+import com.charlesmuchogo.gbsaver.Utils.Common;
 
 
 public class MainActivity extends AppCompatActivity {

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.gb.saver">
+    package="com.charlesmuchogo.gbsaver">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+
 
     <application
         android:allowBackup="true"
@@ -15,10 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.gb.saver.PrivacyPolicy"></activity>
-        <activity android:name="com.gb.saver.AboutUs" />
+        <activity android:name="com.charlesmuchogo.gbsaver.PrivacyPolicy"></activity>
+        <activity android:name="com.charlesmuchogo.gbsaver.AboutUs" />
         <activity
-            android:name="com.gb.saver.SplashActivity"
+            android:name="com.charlesmuchogo.gbsaver.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,11 +28,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.gb.saver.MainActivity" />
+        <activity android:name="com.charlesmuchogo.gbsaver.MainActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.gb.saver.provider"
+            android:authorities="com.charlesmuchogo.gbsaver.provider"
             android:exported="false"
             android:grantUriPermissions="true"
             tools:replace="android:authorities">

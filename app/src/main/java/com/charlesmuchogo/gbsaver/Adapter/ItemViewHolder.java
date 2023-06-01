@@ -1,4 +1,4 @@
-package com.gb.saver.Adapter;
+package com.charlesmuchogo.gbsaver.Adapter;
 
 import android.util.Log;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gb.saver.R;
+import com.charlesmuchogo.gbsaver.R;
 
 public class ItemViewHolder extends RecyclerView.ViewHolder{
 

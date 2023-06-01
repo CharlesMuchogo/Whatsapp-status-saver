@@ -1,4 +1,4 @@
-package com.gb.saver;
+package com.charlesmuchogo.gbsaver;
 
 import org.junit.Test;
 

@@ -1,14 +1,14 @@
-package com.gb.saver.Adapter;
+package com.charlesmuchogo.gbsaver.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.gb.saver.Fragments.ImageFragment;
-import com.gb.saver.Fragments.SavedFilesFragment;
-import com.gb.saver.Fragments.VideoFragment;
-import com.gb.saver.Fragments.WhatsappFragment;
+import com.charlesmuchogo.gbsaver.Fragments.ImageFragment;
+import com.charlesmuchogo.gbsaver.Fragments.SavedFilesFragment;
+import com.charlesmuchogo.gbsaver.Fragments.VideoFragment;
+import com.charlesmuchogo.gbsaver.Fragments.WhatsappFragment;
 
 public class PageAdapter extends FragmentPagerAdapter {
 

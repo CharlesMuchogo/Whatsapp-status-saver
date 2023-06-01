@@ -1,7 +1,8 @@
-package com.gb.saver.Utils;
+package com.charlesmuchogo.gbsaver.Utils;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -18,7 +19,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.FileProvider;
 
-import com.gb.saver.R;
+import com.charlesmuchogo.gbsaver.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
@@ -31,7 +32,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
-import com.gb.saver.Models.Status;
+import com.charlesmuchogo.gbsaver.Models.Status;
 
 
 public class Common {
@@ -106,13 +107,14 @@ public class Common {
 
     }
 
+    @SuppressLint("NotificationPermission")
     private static void showNotification(Context context, RelativeLayout container, File destFile, Status status) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             makeNotificationChannel(context);
         }
 
-        Uri data = FileProvider.getUriForFile(context, "com.gb.saver" + ".provider", new File(destFile.getAbsolutePath()));
+        Uri data = FileProvider.getUriForFile(context, "com.charlesmuchogo.gbsaver" + ".provider", new File(destFile.getAbsolutePath()));
         Intent intent = new Intent(Intent.ACTION_VIEW);
 
         if (status.isVideo()) {
