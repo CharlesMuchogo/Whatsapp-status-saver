@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.charlesmuchogo.gbsaver">
+    package="com.gbsv.saver">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -17,10 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.charlesmuchogo.gbsaver.PrivacyPolicy"></activity>
-        <activity android:name="com.charlesmuchogo.gbsaver.AboutUs" />
+        <activity android:name="com.gbsv.saver.PrivacyPolicy"></activity>
+        <activity android:name="com.gbsv.saver.AboutUs" />
         <activity
-            android:name="com.charlesmuchogo.gbsaver.SplashActivity"
+            android:name="com.gbsv.saver.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,11 +28,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.charlesmuchogo.gbsaver.MainActivity" />
+        <activity android:name="com.gbsv.saver.MainActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.charlesmuchogo.gbsaver.provider"
+            android:authorities="com.gbsv.saver.provider"
             android:exported="false"
             android:grantUriPermissions="true"
             tools:replace="android:authorities">

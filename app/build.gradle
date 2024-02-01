@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
-        applicationId "com.charlesmuchogo.gbsaver"
+        applicationId "com.gbsv.saver"
         minSdkVersion 21
-        targetSdkVersion 33
-        versionCode 1
-        versionName "1.01"
+        targetSdkVersion 34
+        versionCode 2
+        versionName "1.0.2"
         Date date = new Date()
         String d = date.format('_ddMMYYYY')
         setProperty("archivesBaseName", "WhatsApp_Status_Downloader_v$versionName$d")
