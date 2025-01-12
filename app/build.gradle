@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
 
+    namespace = "com.gbsv.saver"
     compileSdkVersion 34
 
     defaultConfig {

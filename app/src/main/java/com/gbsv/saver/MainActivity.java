@@ -37,6 +37,7 @@ import com.gbsv.saver.Adapter.PageAdapter;
 import com.gbsv.saver.Utils.Common;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
@@ -136,23 +137,23 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
 
-            case R.id.menu_rateUs:
-                Toast.makeText(this, "Rate Us", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.menu_share:
-                Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "WhatsApp Status Saver");
-                startActivity(Intent.createChooser(shareIntent, "Share via"));
-
-                return true;
-            case R.id.menu_privacyPolicy:
-                startActivity(new Intent(getApplicationContext(), PrivacyPolicy.class));
-                return true;
-            case R.id.menu_aboutUs:
-                startActivity(new Intent(getApplicationContext(), AboutUs.class));
-                return true;
+//            case R.id.menu_rateUs:
+//                Toast.makeText(this, "Rate Us", Toast.LENGTH_SHORT).show();
+//                return true;
+//            case R.id.menu_share:
+//                Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+//                shareIntent.setType("text/plain");
+//
+//                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "WhatsApp Status Saver");
+//                startActivity(Intent.createChooser(shareIntent, "Share via"));
+//
+//                return true;
+//            case R.id.menu_privacyPolicy:
+//                startActivity(new Intent(getApplicationContext(), PrivacyPolicy.class));
+//                return true;
+//            case R.id.menu_aboutUs:
+//                startActivity(new Intent(getApplicationContext(), AboutUs.class));
+//                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
